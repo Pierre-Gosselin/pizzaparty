@@ -1,19 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div class="container">
   <h1>{{title}}</h1>
   <h2>{{pizza.name}}</h2>
-  <div><label>id: </label>{{pizza.id}}</div>
-  <div><label>name: </label>{{pizza.name}}</div>
-  <div><label>price: </label>{{pizza.price}}</div>
 
-
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="pizza.name" placeholder="name" class="form-control">
-    </div>  
-    <div>
-      <label>price: </label>
-      <input [(ngModel)]="pizza.price" placeholder="price" class="form-control">
+  <div>
+    <label for="name">name: </label>
+    <input [(ngModel)]="pizza.name" placeholder="name" class="form-control" id="name">
+  </div>  
+  <hr>
+  <div class="row">
+    <div class="col-lg-3" *ngFor="let pizza of pizzas">
+      <div class="card" style="height: 100%;">
+        <img src="{{pizza.image}}" class="card-img-top img-fluid">
+        <div class="card-body" style="text-align: center;">
+          
+          <h5 class="card-title">{{pizza.name}}</h5>
+          <p class="card-text">{{pizza.price}} &euro;</p>
+          <p class="card-text">{{pizza.description}}</p>
+        
+          <div class="form-group">
+            <label for="taille">Sélectionnez la taille de la pâte</label>
+            <select class="form-control" id="taille">
+              <option>Medium Classic</option>
+              <option>Xlarge Classic</option>
+              <option>Xlarge Pan</option>
+              <option>Premium Cheezy</option>
+              <option>Premium Pan</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button data-id="{{pizza.id}}" class="btn btn-primary">Commander</button>
+        </div>
+      </div>
     </div>
-
+  </div>
 </div>
