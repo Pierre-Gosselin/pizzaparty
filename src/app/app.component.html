@@ -1,38 +1,42 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div class="container">
-  <h1>{{title}}</h1>
-  <h2>{{pizza.name}}</h2>
 
-  <div>
-    <label for="name">name: </label>
-    <input [(ngModel)]="pizza.name" placeholder="name" class="form-control" id="name">
-  </div>  
-  <hr>
-  <div class="row">
-    <div class="col-lg-3" *ngFor="let pizza of pizzas">
-      <div class="card" style="height: 100%;">
-        <img src="{{pizza.image}}" class="card-img-top img-fluid">
-        <div class="card-body" style="text-align: center;">
-          
-          <h5 class="card-title">{{pizza.name}}</h5>
-          <p class="card-text">{{pizza.price}} &euro;</p>
-          <p class="card-text">{{pizza.description}}</p>
-        
-          <div class="form-group">
-            <label for="taille">Sélectionnez la taille de la pâte</label>
-            <select class="form-control" id="taille">
-              <option>Medium Classic</option>
-              <option>Xlarge Classic</option>
-              <option>Xlarge Pan</option>
-              <option>Premium Cheezy</option>
-              <option>Premium Pan</option>
-            </select>
-          </div>
+<div class="container">
+    <app-menu title="Mon application" theme="dark">
+
+    </app-menu>
+    <h1>{{title}}</h1>
+    <app-pizza [selectedPizza]= "selectedPizza">
+
+    </app-pizza>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3 mb-4" *ngFor="let pizza of pizzas">
+            <div class="card h-100" (click)="onSelect(pizza)">
+                <img [src]="'assets/'+pizza.image" [alt]="pizza.name" class="card-img-top img-fluid">
+                <div class="card-body">               
+                    <h5 class="card-title">{{pizza.name}}</h5>                
+                    <div class="h-50">
+                        <p class="card-text">{{pizza.description}}</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="taille"><small>Sélectionnez la taille de la pâte</small></label>
+                        <select class="form-control" id="taille">
+                        <option>Medium Classic</option>
+                        <option>Xlarge Classic</option>
+                        <option>Xlarge Pan</option>
+                        <option>Premium Cheezy</option>
+                        <option>Premium Pan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-9"><button data-id="{{pizza.id}}" class="btn btn-primary">Commander</button></div>
+                        <div class="col-3"><p class="card-text">{{pizza.price}} &euro;</p></div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-footer">
-          <button data-id="{{pizza.id}}" class="btn btn-primary">Commander</button>
-        </div>
-      </div>
     </div>
-  </div>
 </div>
+
