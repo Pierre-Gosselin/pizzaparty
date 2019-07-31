@@ -1,24 +1,31 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pizza } from '../models/pizza.models';
 
+
 @Component({
   selector: 'app-pizza',
-  template: `
-  <div *ngIf="selectedPizza">
-    <h2>{{selectedPizza.name}}</h2>
-    <div><label>id: </label>{{selectedPizza.id}}</div>
-    <div>
-      <label>name: </label>
-      <input [(ngModel)]="selectedPizza.name" placeholder="name">
-    </div>
-    <div><label>price: </label>{{selectedPizza.price}}</div>
-  </div>
-  `,
+   // templateUrl: './pizza.component.html',
+   template: `
+   TEST COMPOSANT
+    <div *ngIf= "selectedPizza">
+
+      <h2>{{ selectedPizza.name }}</h2>
+      <p> Prix : {{selectedPizza.price}} € </p>
+    
+      <div class="form-group">
+        <label  class="input-group-text"  >La pizza choisie : </label>
+        <input [(ngModel)]="selectedPizza.name" placeholder="name" class="form-control">
+      </div>
+    
+  </div> <br>
+ `,
   styleUrls: ['./pizza.component.scss']
 })
-export class PizzaComponent implements OnInit {
-  // On transforme selectedPizza en attribut HTML
-  @Input() selectedPizza : Pizza;
+
+export class PizzaComponent implements OnInit {  
+  // On tranforme le selectedPizza en attribut HTML
+  @Input() selectedPizza: Pizza;
+
   constructor() { }
 
   ngOnInit() {

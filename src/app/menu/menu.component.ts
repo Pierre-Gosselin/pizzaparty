@@ -7,11 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  @Input() title;
-  @Input() theme;
+  @Input() title :string;
+  @Input() theme :string;
   @Input() ngClass=[];
 
-  isCollasped = false;
+  isCollasped :boolean = false;
   constructor() { }
 
   ngOnInit() {
