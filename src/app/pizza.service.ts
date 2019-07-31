@@ -10,7 +10,10 @@ export const PIZZAS : Pizza[] = [
   { id: 6, name: 'Raclette', price: 13, image: "raclette.jpg", description: "Crème fraîche légère, mozzarella, pommes de terre, lardons et fromage à raclette."},
   { id: 7, name: 'Chèvre Miel', price: 12, image: "chevre-miel.jpg", description: "Crème fraîche légère, mozzarella, fromage de chèvre, miel."},
   { id: 8, name: 'Végétarienne', price: 5, image: "vegetarienne.jpg", description: "Sauce tomate, mozzarella, champignons frais, oignons émincés, poivrons verts et tomates fraîches.."},
-  { id: 8, name: 'Provençale', price: 8, image: "provencale.jpg", description: "Sauce tomate, mozzarella, thon, tomates fraîches, oignons émincés et olives noires."}
+  { id: 9, name: 'Provençale', price: 8, image: "provencale.jpg", description: "Sauce tomate, mozzarella, thon, tomates fraîches, oignons émincés et olives noires."},
+  { id: 10, name: 'Nordique', price: 14, image: "nordique.jpg", description: "Crème fraîche légère, mozzarella et saumon fumé."},
+  { id: 11, name: 'Texane Barbecue', price: 9, image: "texane.jpg", description: "Sauce barbecue, mozzarella, jambon, boulettes au bœuf*, lardons, champignons frais et oignons émincés."},
+  { id: 12, name: 'Samouraï', price: 9, image: "samourai.jpg", description: "Sauce tomate, mozzarella, merguez**, filet de poulet rôti et mariné, oignons émincés, Sauce Samouraï."}
 ];
 
 @Injectable({

@@ -6,7 +6,6 @@ import { Pizza } from '../models/pizza.models';
   selector: 'app-pizza',
    // templateUrl: './pizza.component.html',
    template: `
-   TEST COMPOSANT
     <div *ngIf= "selectedPizza">
 
       <h2>{{ selectedPizza.name }}</h2>

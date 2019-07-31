@@ -6,8 +6,8 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup" [ngClass]="{'show':isCollasped}">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" routerLink="/">Home</a>
-                <a class="nav-item nav-link" routerLink="/pizzas">Pizzas</a>
+                <a class="nav-item nav-link" routerLink="/" routerLinkActive = "active-link" [routerLinkActiveOptions]="{exact: true}">Home</a>
+                <a class="nav-item nav-link" routerLink="/pizzas" routerLinkActive = "active-link">Pizzas</a>
             </div>
         </div>
     </nav>

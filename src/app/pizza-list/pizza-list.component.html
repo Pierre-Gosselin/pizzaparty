@@ -5,12 +5,13 @@
 <hr>
 <div class="row">
     <div class="col-lg-3 mb-4" *ngFor="let pizza of pizzas">
-        <div class="card h-100" (click)="onSelect(pizza)">
+        <div class="card h-100">
             <img [src]="'assets/'+pizza.image" [alt]="pizza.name" class="card-img-top img-fluid">
             <div class="card-body">               
                 <h5 class="card-title">{{pizza.name}}</h5>                
                 <div class="h-50">
                     <p class="card-text">{{pizza.description}}</p>
+                    <a (click)="onSelect(pizza)" >En savoir plus</a>
                 </div>
                 <div class="form-group">
                     <label for="taille"><small>Sélectionnez la taille de la pâte</small></label>
