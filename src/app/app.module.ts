@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { PizzaListComponent } from './pizza-list/pizza-list.component';
 import { FrontComponent } from './front/front.component';
 import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
+import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
     PizzaListComponent,
     FrontComponent,
     PizzaSingleComponent,
+    PizzaCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,12 @@ import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
       {
         path: 'pizzas/:id',
         component: PizzaSingleComponent
+      },
+      {
+        path: 'pizza/create',
+        component : PizzaCreateComponent
       }
+
     ])
   ],
   providers: [],

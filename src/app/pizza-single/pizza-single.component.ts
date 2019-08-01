@@ -25,4 +25,8 @@ export class PizzaSingleComponent implements OnInit {
       pizza => this.pizza = pizza
     );
   }
+  delete(pizza: Pizza): void{
+    this.pizzaService.deletePizza(this.id).then();
+    
+  }
 }

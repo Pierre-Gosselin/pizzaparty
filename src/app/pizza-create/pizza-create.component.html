@@ -1,0 +1,21 @@
+<h3>Ajouter une pizza</h3>
+<hr>
+
+<div class="form-group">
+    <label for="name">Nom de la pizza :</label>
+    <input [(ngModel)]="createPizza.name" type="text" class="form-control" id="name">
+</div>
+<div class="form-group">
+    <label for="price">Prix :</label>
+    <input [(ngModel)]="createPizza.price" type="text" class="form-control" id="price">
+</div>
+<div class="form-group">
+    <label for="image">Image :</label>
+    <input [(ngModel)]="createPizza.image" type="text" class="form-control" id="image">
+</div>
+<div class="form-group">
+    <label for="description">Description :</label>
+    <textarea [(ngModel)]="createPizza.description" class="form-control" id="description" rows="3"></textarea>
+</div>
+
+<button type="submit" class="btn btn-primary" (click)="save()">Submit</button>

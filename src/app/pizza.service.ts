@@ -33,12 +33,12 @@ export class PizzaService {
   /**
    * Permet de modifier une pizza sur notre API
    */
-    updatePizza(pizza : Pizza){
+    updatePizza(pizza : Pizza): Promise<Pizza> {
       // La methode PUT de HTTP est la même que POST
       // Elle permet de mettre à jour un élément
       // Le premier arguement de put est l'URL de l'API
       // Le second argument est l'objet à mettre à jour
-      return this.http.put('http://localhost:3000/pizza/'+pizza.id, pizza).toPromise().then((response) => console.log(response));
+      return this.http.put('http://localhost:3000/pizza/'+pizza.id, pizza).toPromise().then((response) => response as Pizza);
     }
 
     /**
@@ -46,14 +46,18 @@ export class PizzaService {
     Permet de créer une nouvelle pizza sur l'API
     1. Sur la page /pizzas, ajouter un lier pour créer une pizza
     2. Ce lien va vers /pizza/create qui est liée au composant PizzaCreate
-    3. Le composant PizzaCreate va contenir une propriété pizza
-    Par défault, la pizza est à null. il contiendra également une méthode save()
+    3. Le composant PizzaCreate va contenir une propriété pizza. Par défault, la pizza est à null. il contiendra également une méthode save()
     4. Le template du composant va contenir 3 champs name, price, image)
-    Au clic sur le bouton du formulaire (Ajouter), on appellera la méthode save()
-    du composant
+    Au clic sur le bouton du formulaire (Ajouter), on appellera la méthode save() du composant.
+    5. Dans la méthode save() du composant, on appelera la méthode createPizza() de notre service pour insérer la pizza dans l'API via le service http (avec la méthode POST()).
+    6. On masquera le formulaire après la sauvegarde.
      */
-    createPizza(){
+    createPizza(pizza :Pizza): Promise<Pizza>{
+      return this.http.post('http://localhost:3000/pizza/', pizza).toPromise().then((response) => response as Pizza);
+    }
 
+    deletePizza(id :Number): Promise<Pizza>{
+      return this.http.delete('pizza/pizzas/' + id).toPromise().then(() => null)
     }
 }
 
