@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -22,6 +23,7 @@ import { PizzaSingleComponent } from './pizza-single/pizza-single.component';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       { // On créer une route /pizzas sur notre application qui affichera le template du composant PizzaListComponent
         path: 'pizzas',

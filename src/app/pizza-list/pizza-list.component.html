@@ -4,7 +4,7 @@
 </app-pizza>
 <hr>
 <div class="row">
-    <div class="col-lg-3 mb-4" *ngFor="let pizza of pizzas">
+    <div class="col-lg-3 col-sm-6 mb-4" *ngFor="let pizza of pizzas">
         <div class="card h-100">
             <img [src]="'assets/'+pizza.image" [alt]="pizza.name" class="card-img-top img-fluid">
             <div class="card-body">               
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="card-footer">
-                <div class="row">
+                <div class="row align-items-center">
                     <div class="col-9"><button data-id="{{pizza.id}}" class="btn btn-primary">Commander</button></div>
                     <div class="col-3"><p class="card-text">{{pizza.price}} &euro;</p></div>
                 </div>

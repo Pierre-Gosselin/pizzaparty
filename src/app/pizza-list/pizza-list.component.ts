@@ -17,7 +17,7 @@ export class PizzaListComponent implements OnInit {
   // Equivalent du document.ready
   // Quand le composant est prêt dans le DOM, on récupère les pizzas
   ngOnInit(){
-    this.pizzas = this.pizzaService.getPizzas();
+    this.pizzaService.getPizzas().then(pizzas => this.pizzas = pizzas);
   }
   onSelect(pizza: Pizza) :void
   {

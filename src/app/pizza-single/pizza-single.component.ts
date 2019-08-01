@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute }   from '@angular/router';
+import { ActivatedRoute, Params }   from '@angular/router';
 import { Pizza } from '../models/pizza.models';
 import { PizzaService } from '../pizza.service';
 
@@ -21,6 +21,8 @@ export class PizzaSingleComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     // On récupère la pizza de la route actuelle
-    this.pizza = this.pizzaService.getOnePizza(this.id);
+    this.pizzaService.getOnePizza(this.id).then(
+      pizza => this.pizza = pizza
+    );
   }
 }

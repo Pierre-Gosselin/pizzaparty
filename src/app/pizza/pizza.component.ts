@@ -1,23 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Pizza } from '../models/pizza.models';
-
+import { PizzaService } from '../pizza.service';
 
 @Component({
   selector: 'app-pizza',
-   // templateUrl: './pizza.component.html',
-   template: `
-    <div *ngIf= "selectedPizza">
-
-      <h2>{{ selectedPizza.name }}</h2>
-      <p> Prix : {{selectedPizza.price}} € </p>
-    
-      <div class="form-group">
-        <label  class="input-group-text"  >La pizza choisie : </label>
-        <input [(ngModel)]="selectedPizza.name" placeholder="name" class="form-control">
-      </div>
-    
-  </div> <br>
- `,
+  templateUrl: './pizza.component.html',
   styleUrls: ['./pizza.component.scss']
 })
 
@@ -25,9 +12,18 @@ export class PizzaComponent implements OnInit {
   // On tranforme le selectedPizza en attribut HTML
   @Input() selectedPizza: Pizza;
 
-  constructor() { }
+  constructor(private pizzaService: PizzaService) { }
 
   ngOnInit() {
   }
 
+  /**
+   * Cette fonctionne appellera le service pizza
+   * pour modifier la pizza sélectionnée
+   */
+   update(){
+     console.log(this.selectedPizza);
+     this.pizzaService.updatePizza(this.selectedPizza);
+     this.selectedPizza = null;
+   }
 }

@@ -12,7 +12,7 @@ export class FrontComponent implements OnInit {
   constructor(private pizzaService: PizzaService) { }
 
   ngOnInit(): void {
-    this.pizzas = this.pizzaService.getPizzas();
+    this.pizzaService.getPizzas().then(pizzas => this.pizzas = pizzas);
   }
 
 }

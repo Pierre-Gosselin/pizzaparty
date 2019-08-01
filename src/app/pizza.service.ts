@@ -1,37 +1,59 @@
 import { Injectable } from '@angular/core';
 import { Pizza } from './models/pizza.models';
-
-export const PIZZAS : Pizza[] = [
-  { id: 1, name: 'Reine', price: 12, image: "queen.jpg", description: "Sauce tomate, mozzarella, jambon et double champignons frais."},
-  { id: 2, name: '4 fromages', price: 13, image: "fromage.jpg", description: "Sauce tomate ou crème fraîche légère, mozzarella, fromage de chèvre, emmental et Fourme d'Ambert AOP." },
-  { id: 3, name: 'Orientale', price: 11, image: "orientale.jpg", description: "Sauce tomate, mozzarella, double merguez** et champignons frais." },
-  { id: 4, name: 'Cannibale', price: 9, image: "cannibale.jpg", description: "Sauce barbecue, mozzarella, boulettes au bœuf*, filet de poulet rôti et mariné et merguez**." },
-  { id: 5, name: 'Montagnarde', price: 10, image: "montagnarde.jpg", description: "Crème fraîche légère, mozzarella, jambon cru, fromage à raclette et champignons frais."},
-  { id: 6, name: 'Raclette', price: 13, image: "raclette.jpg", description: "Crème fraîche légère, mozzarella, pommes de terre, lardons et fromage à raclette."},
-  { id: 7, name: 'Chèvre Miel', price: 12, image: "chevre-miel.jpg", description: "Crème fraîche légère, mozzarella, fromage de chèvre, miel."},
-  { id: 8, name: 'Végétarienne', price: 5, image: "vegetarienne.jpg", description: "Sauce tomate, mozzarella, champignons frais, oignons émincés, poivrons verts et tomates fraîches.."},
-  { id: 9, name: 'Provençale', price: 8, image: "provencale.jpg", description: "Sauce tomate, mozzarella, thon, tomates fraîches, oignons émincés et olives noires."},
-  { id: 10, name: 'Nordique', price: 14, image: "nordique.jpg", description: "Crème fraîche légère, mozzarella et saumon fumé."},
-  { id: 11, name: 'Texane Barbecue', price: 9, image: "texane.jpg", description: "Sauce barbecue, mozzarella, jambon, boulettes au bœuf*, lardons, champignons frais et oignons émincés."},
-  { id: 12, name: 'Samouraï', price: 9, image: "samourai.jpg", description: "Sauce tomate, mozzarella, merguez**, filet de poulet rôti et mariné, oignons émincés, Sauce Samouraï."}
-];
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PizzaService {
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   // Récupérer toutes les pizzas
-  getPizzas():Pizza[]{
-    return PIZZAS;
+  // La fonction nous "promet" de renvoyer un tableau de pizzas.
+  // toPromise() permet de récupérer une promesse
+  getPizzas(): Promise<Pizza[]> {
+    // On effectue une requête HTTP ou GET sur notre api
+    // Angular renvoie par défaut un observable mais on le convertit en promesse avec toPromise()
+    // Quand la promesse est recu (then), on envoie les pizzas de l'api
+    // as pizza[] permet juste de tricher sur le type renvoyé par la fonction
+    return this.http.get('http://localhost:3000/Pizza').toPromise().then(
+      response => response as Pizza[]
+    );
   }
 
   // Récupérer une pizza par son id
-  getOnePizza(id: number): Pizza {
+  getOnePizza(id: number): Promise<Pizza> {
     // On va chercher dans le tableau PIZZAS la pizza qui contient l'id passé en paramètre
-    return PIZZAS.find(pizza => pizza.id == id);
+    //return PIZZAS.find(pizza => pizza.id == id);
+    return this.http.get('http://localhost:3000/pizza/'+id).toPromise().then(
+      response => response as Pizza
+    );
   }
+  /**
+   * Permet de modifier une pizza sur notre API
+   */
+    updatePizza(pizza : Pizza){
+      // La methode PUT de HTTP est la même que POST
+      // Elle permet de mettre à jour un élément
+      // Le premier arguement de put est l'URL de l'API
+      // Le second argument est l'objet à mettre à jour
+      return this.http.put('http://localhost:3000/pizza/'+pizza.id, pizza).toPromise().then((response) => console.log(response));
+    }
+
+    /**
+    
+    Permet de créer une nouvelle pizza sur l'API
+    1. Sur la page /pizzas, ajouter un lier pour créer une pizza
+    2. Ce lien va vers /pizza/create qui est liée au composant PizzaCreate
+    3. Le composant PizzaCreate va contenir une propriété pizza
+    Par défault, la pizza est à null. il contiendra également une méthode save()
+    4. Le template du composant va contenir 3 champs name, price, image)
+    Au clic sur le bouton du formulaire (Ajouter), on appellera la méthode save()
+    du composant
+     */
+    createPizza(){
+
+    }
 }
 
