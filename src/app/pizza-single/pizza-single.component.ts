@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Pizza } from '../models/pizza.models';
 import { PizzaService } from '../pizza.service';
+import { Location } from '@angular/common';
+import { NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-pizza-single',
@@ -15,7 +17,9 @@ export class PizzaSingleComponent implements OnInit {
   // on peut injecter plusieurs services dans le constructeur
   constructor(
     private route: ActivatedRoute,
-    private pizzaService : PizzaService
+    private pizzaService : PizzaService,
+    private location: Location,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
@@ -25,8 +29,16 @@ export class PizzaSingleComponent implements OnInit {
       pizza => this.pizza = pizza
     );
   }
-  delete(pizza: Pizza): void{
-    this.pizzaService.deletePizza(this.id).then();
-    
+
+  // On clique pour ouvrir la modal
+  open(content){
+    this.modalService.open(content).result.then(
+      result => {
+        // Ce code s'exécute à la fermeture de la modal
+        if (result === 'delete')
+        {
+          this.pizzaService.deletePizza(this.pizza).then(pizza => this.location.back())
+        }
+    });
   }
 }

@@ -83,6 +83,13 @@
       "price": 9,
       "image": "samourai.jpg",
       "description": "Sauce tomate, mozzarella, merguez**, filet de poulet rôti et mariné, oignons émincés, Sauce Samouraï."
+    },
+    {
+      "id": 13,
+      "name": "Margherita",
+      "price": 10,
+      "image": "margherita.jpg",
+      "description": "Sauce tomate et double mozzarella."
     }
   ]
 }

@@ -53,11 +53,16 @@ export class PizzaService {
     6. On masquera le formulaire après la sauvegarde.
      */
     createPizza(pizza :Pizza): Promise<Pizza>{
-      return this.http.post('http://localhost:3000/pizza/', pizza).toPromise().then((response) => response as Pizza);
+      return this.http.post('http://localhost:3000/pizza', pizza).toPromise().then((response) => response as Pizza);
     }
 
-    deletePizza(id :Number): Promise<Pizza>{
-      return this.http.delete('pizza/pizzas/' + id).toPromise().then(() => null)
+
+    /**
+      Permet de supprimer une pizza    
+     */
+
+    deletePizza(pizza :Pizza){
+      return this.http.delete('http://localhost:3000/pizza/' + pizza.id).toPromise().then((response) => response as Pizza);
     }
 }
 

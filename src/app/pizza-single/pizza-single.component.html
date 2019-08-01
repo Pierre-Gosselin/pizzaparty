@@ -12,7 +12,23 @@
     <div class="col-6">
         <h1>{{pizza.name}}</h1>
         <p>{{pizza.description}}</p>
-        <button type="submit" class="btn btn-primary" (click)="delete(pizza)">Suppression</button>
+        <button type="submit" class="btn btn-danger" (click)="open(content)">Suppression</button>
+
     </div>
     
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Supprimer la pizza</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.close('nodelete')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>Êtes-vous sûr de vouloir supprimer cette pizza ?</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="modal.close('delete')">Oui</button>
+  </div>
+</ng-template>

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { PizzaComponent } from './pizza/pizza.component';
@@ -25,6 +26,7 @@ import { PizzaCreateComponent } from './pizza-create/pizza-create.component';
   imports: [
     BrowserModule,
     FormsModule,
+    NgbModule,
     HttpClientModule,
     RouterModule.forRoot([
       { // On créer une route /pizzas sur notre application qui affichera le template du composant PizzaListComponent
